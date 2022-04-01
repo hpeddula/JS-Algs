@@ -59,3 +59,51 @@ for (let key in profile) {
 } 
 
 console.log('Total Age',totalAge)
+
+
+//Promise Polyfill
+
+function MyPromise (executor) {
+    let onReject;
+    let onResolve;
+    let isCalled = false;
+    let isFullFilled = false;
+    let isRejected = false;
+    let error;
+    let value;
+    function resolve(val) {
+        isFullFilled = true;
+        value = val;
+        if(typeof onResolve === 'function' && !isCalled) {
+            onResolve(val)
+            isCalled = true;
+        }
+    }
+    function reject(err) {
+        isRejected = true;
+        error = err;
+        if(typeof onReject === 'function' && !isCalled) {
+            onReject(err)
+            isCalled = true;
+        }
+    }
+    this.then = function(thenHandler){
+        onResolve = thenHandler;
+        if(isFullFilled && !isCalled) {
+            onResolve(value);
+            isCalled = true
+        }
+        return this
+    }
+
+    this.catch  = function(catchHandler) {
+        onReject = catchHandler;
+        if(isRejected && !isCalled) {
+            onReject(error);
+            isCalled = true
+        }
+        return this
+    }
+
+    executor(resolve,reject)
+}
