@@ -42,3 +42,32 @@ var threeSum = function (nums) {
 };
 
 threeSum([-1,0,1,2,-1,-4])
+
+
+[-1,0,1,2,-1,-4]
+[-4, -1, -1, 0, 1, 2]
+var threeSum = function(nums) {
+    nums.sort((a , b) => a - b );
+    let res = [];
+    for(let i = 0; i < nums.length - 1; i++) {
+        if(nums[i] > 0) return res;
+        if(i > 0 && nums[i] === nums[i - 1]) continue; //remove duplicated
+        let left = i + 1;
+        let right = nums.length - 1;
+        while(left < right) {
+            if(nums[i] + nums[left] + nums[right] === 0) {
+                res.push([nums[i], nums[left],nums[right]])
+                while(right > left && nums[left] === nums[left + 1]) left++; //remove duplicated
+                while(right > left && nums[right] === nums[right - 1]) right--; //remove duplicated
+                left++;
+                right--;
+            } else if(nums[i] + nums[left] + nums[right] < 0) {
+                left++;
+            } else {
+                right--;
+            }
+            
+        }
+    }
+    return res;
+};
