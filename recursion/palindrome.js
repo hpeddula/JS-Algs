@@ -5,3 +5,6 @@ const isPalindrome = (input) => {
     }
     return false
 }
+
+
+console.log(isPalindrome('10022001'))

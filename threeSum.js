@@ -52,8 +52,8 @@ var threeSum = function(nums) {
     for(let i = 0; i < nums.length - 1; i++) {
         if(nums[i] > 0) return res;
         if(i > 0 && nums[i] === nums[i - 1]) continue; //remove duplicated
-        let left = i + 1;
-        let right = nums.length - 1;
+        let left = i + 1; //2
+        let right = nums.length - 1; //5
         while(left < right) {
             if(nums[i] + nums[left] + nums[right] === 0) {
                 res.push([nums[i], nums[left],nums[right]])
