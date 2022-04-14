@@ -48,12 +48,15 @@ const cloneArray =  (input) => {
     for(let obj of input) {
       for(let obj1 in obj) {
         if(Array.isArray(obj1))  cloneArray(obj1)
-        let newObj = {[obj1]:obj[obj1]}
+        let copyObj = JSON.parse(JSON.stringify(obj))
+        let newObj = {[obj1]:copyObj[obj1]}
         arr2.push(newObj)
       }
     }
   }
   cloneArray(arr)
+  arr[0].address[0].city ='Pune'
+  console.log(arr2)
 // cloneArray(arr)
 
 // console.log(arr2)
