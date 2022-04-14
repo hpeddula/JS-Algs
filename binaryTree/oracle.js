@@ -45,14 +45,15 @@ let arr2 =[]
 // return arr2
 
 const cloneArray =  (input) => {
-  for(let obj of input) {
-    for(let obj1 in obj) {
-      if(Array.isArray(obj1))  cloneArray(obj1)
-      let newObj = JSON.parse(JSON.stringify(obj1))
-      arr2.push(newObj)
+    for(let obj of input) {
+      for(let obj1 in obj) {
+        if(Array.isArray(obj1))  cloneArray(obj1)
+        let newObj = {[obj1]:obj[obj1]}
+        arr2.push(newObj)
+      }
     }
   }
-}
+  cloneArray(arr)
 // cloneArray(arr)
 
 // console.log(arr2)
