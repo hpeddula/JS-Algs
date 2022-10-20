@@ -20,7 +20,7 @@ const mirror =() => {
         const firstVal = val.slice(0,index+1).join('');
         const lastVal = val.slice(index+1).join('')
         const paddedString = index === finalRes.length -1 ?`${firstVal}${lastVal}` :`${firstVal.padEnd(gapLength+index+1)}${lastVal}`
-        console.log(paddedString,gapLength)
+        console.log(paddedString)
     }
 }
 mirror()
