@@ -30,7 +30,7 @@ const sumN = (n) => {
     return n + sumN(n-1)
 }
 
-// console.log(sumN(5))
+console.log(sumN(5))
 
 const fact = (n) => {
     if(n === 0) return 0
@@ -71,4 +71,4 @@ const atoi = (input) => {
     return input + atoi(input.substr(input.length -1))
 }
 
-console.log(atoi('42asdf'))
+// console.log(atoi('42asdf'))
