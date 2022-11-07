@@ -396,3 +396,37 @@ const numSubarraysWithSum = (nums, goal) => {
 // console.log(numSubarraysWithSum([0,0,0,0,0],0))
 
 
+const slidingWindowMaximum = (arr,k) => {
+    let left =0,right =0,ans =[];
+    while(right < arr.length) {
+        if(right -left +1 < k) {
+            right++
+        }
+        if(right -left +1 === k) {
+            const max = Math.max(...arr.slice(left,right+1))
+            ans.push(max)
+            left++;
+            right++
+        }
+    }
+    return ans
+}
+
+// console.log(slidingWindowMaximum([1,3,-1,-2,5,3,6,7],3))
+
+
+const kadaneAlgo = (nums) => {
+    let meh =0, msf = Number.MIN_SAFE_INTEGER;
+    for(let num of nums) {
+        meh = meh + num;
+        if(meh <num) {
+            meh = num
+        }
+        if(msf < meh) {
+            msf = meh
+        }
+    }
+    return msf
+}
+
+console.log(kadaneAlgo([-2,1,-3,4,-1,2,1,-5,4]))

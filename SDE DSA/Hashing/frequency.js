@@ -36,4 +36,21 @@ const getKey = (val,v) => {
     }
 }
 
-minMaxFrequency([10,5,10,15,10,5])
+// minMaxFrequency([10,5,10,15,10,5])
+
+
+//Two sum using hashmap
+const twoSum = (arr,target) => {
+    const ansMap = new Map()
+    for(let i=0;i<arr.length;i++) {
+        const diff = target - arr[i]
+        console.log(arr[i],i,diff)
+        if(ansMap.has(diff)) {
+            return [i,ansMap.get(diff)].sort((a,b)=>a-b)
+        } else {
+            ansMap.set(arr[i],i)
+        }
+    }
+}
+
+console.log(twoSum([2,6,5,8,11],14))
