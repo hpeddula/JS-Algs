@@ -16,15 +16,14 @@ let obj = {
 
 function flatternObject(obj,nameKey=''){
         let res = {};
-        console.log(nameKey)
+        // console.log(nameKey)
         const [globalKey] = Object.keys(obj)
         for(let key in obj) {
-            nameKey = nameKey === '' ? `${key}` : `${nameKey}_${key}`
+            nameKey = nameKey === '' ? key : `${nameKey}_${key}`
             if(Object.keys(obj[key]).length >0) {
-                console.log('Key',Object.keys(obj[key]).length )
                res = {...res,...flatternObject(obj[key],nameKey)}
             } else  {
-                res = {...res,[nameKey]:obj[key]}
+                res = {...res,[`${nameKey}`]:obj[key]}
             }
         }
         // for(let i=0;i< Object.keys(obj).length;i++) {

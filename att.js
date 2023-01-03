@@ -112,3 +112,7 @@ let nonDuplicates = [1,2,3,'a','a','f',3,4,2,'d','d'].reduce((acc,val)=> {
 },[])
 
 console.log(nonDuplicates)
+
+export const add= (a,b) => {
+    return a+b;
+}

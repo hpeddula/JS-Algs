@@ -241,3 +241,44 @@ const exploreGridMinCount = (grid,r,c,visitedIsland) => {
 
     return size
 }
+
+
+const canFinish = (numCourses, prerequisites) => {
+    const visited = new Set()
+    const graph = buildGraphs(prerequisites)
+    const [firstVal] = Object.values(graph)
+    console.log(firstVal)
+    const stack =[firstVal]
+    visited.add(firstVal)
+    const dfs = []
+    while(stack.length) {
+        const current = stack.pop();
+        dfs.push(current)
+        for(let neighbour of graph[current]) {
+            console.log(neighbour)
+            if(!visited.has(neighbour)) {
+                visited.add(neighbour)
+                stack.push(neighbour)
+            } else return false
+        }
+    }
+    // console.log(visited)
+    return true
+    // console.log(dfs)
+};
+
+
+const buildGraphs = (edges) => {
+    const graph = {}
+    for (let edge of edges) {
+        const [a, b] = edge;
+        if (!(a in graph)) graph[a] = [];
+        if (!(b in graph)) graph[b] = [];
+        graph[a].push(b)
+        graph[b].push(a)
+    }
+    return graph;
+}
+
+// console.log(buildGraphs([[1,0]]))
+console.log(canFinish(2,[[1,0]]))
