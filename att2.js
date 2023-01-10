@@ -114,3 +114,37 @@ function Promise(executor) {
     }  
     executor(resolve,reject)
 }
+
+
+//fact
+
+const fact = (n)  => {
+    if(n===1) return n
+    else return n* fact(n-1)
+}
+
+// console.log(fact(6))
+
+const curriedFact = curry(fact)
+// console.log(fact.length)
+
+function currFn2(fn) {
+    return function curried(...args) {
+        if(fn.length >= args.length) {
+            fn.apply(this,args)
+        } else {
+            return function(...args3){
+                return curried.apply(this,args.concat(args3))
+            }
+        }
+    }
+}
+
+const factMemo = (n,memo={}) => {
+    if(n in memo) return memo[n]
+    else if(n ===1) memo[n] =1
+    else memo[n] = n* fact(n-1,memo) 
+    return memo[n]
+}
+
+console.log(factMemo(6))
