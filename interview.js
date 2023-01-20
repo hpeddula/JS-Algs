@@ -1,3 +1,4 @@
+import {func} from './build/palindromeQuestion.js'
 const profile = {
     name: 'peter',
     age: 56,
@@ -119,3 +120,5 @@ function curry(fn) {
         }
     }
 }
+
+console.log(func('?x?'))
