@@ -1,4 +1,6 @@
-import {func} from './build/palindromeQuestion.js'
+import {func} from './dest/palindromeQuestion.js'
+import HashTable from './dest/HashTable.js'
+import { BinarySearchTree } from './dest/BinarySearchTree.js'
 const profile = {
     name: 'peter',
     age: 56,
@@ -59,7 +61,7 @@ for (let key in profile) {
     }
 } 
 
-console.log('Total Age',totalAge)
+// console.log('Total Age',totalAge)
 
 
 //Promise Polyfill
@@ -121,4 +123,23 @@ function curry(fn) {
     }
 }
 
-console.log(func('?x?'))
+// console.log(func('?x?'))
+
+// const table = new HashTable(50);
+// table.set('name', 'Bruce');
+// table.set('age', 25);
+// table.set('mane','Clarke')
+// table.display();
+// table.set('name','Diana')
+// table.display()
+
+// table.remove('name')
+// table.display()
+
+const bst = new BinarySearchTree();
+bst.insert(10)
+bst.insert(5)
+bst.insert(17)
+
+// bst.preOrder(bst.root)
+console.log(bst.max(bst.root))

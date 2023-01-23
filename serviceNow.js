@@ -98,7 +98,17 @@ function problem(input) {
     const output = concatKeys(obj);
     console.log(output);
     console.log(Object.keys(obj['parent']))
-    
+    const flatternObjectRecursive = (input,parentName = '',res= {}) => {
+        for(let key in input) {
+            let parentKey = parentName ? `${parentName}_${key}` : key
+            if(typeof input[key] === 'object') {
+                flatternObjectRecursive(input[key],parentKey,res)
+            } else {
+                res[parentKey]  = input[key]
+            }
+        }
+        return res
+    }
 // Output:
 //     {
 //         parent_child1: 1,
